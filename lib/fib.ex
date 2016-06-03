@@ -4,9 +4,7 @@ defmodule Fib do
   def fib(n) when n < 4, do: 1
   def fib(n), do: fib(n-1) + fib(n-2)
 
-  def sum_of_evens_to(limit) do
-    calc_sum(1, 0, 0, limit)
-  end
+  def sum_of_evens_to(limit), do: calc_sum(1, 0, 0, limit)
 
   defp calc_sum(_, fib_val, sum, limit) when fib_val > limit do
     sum
