@@ -1,4 +1,4 @@
-defmodule RnKata do
+defmodule Rn do
   def romanize(arabic) when arabic >= 1000, do: extract(arabic, 1000, "M")
   def romanize(arabic) when arabic >= 900, do: extract(arabic, 900, "CM")
   def romanize(arabic) when arabic >= 500, do: extract(arabic, 500, "D")
