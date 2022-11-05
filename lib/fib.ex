@@ -1,19 +1,80 @@
 defmodule Fib do
 
-  def fib(n) when n < 2, do: 0
-  def fib(n) when n < 4, do: 1
-  def fib(n), do: fib(n-1) + fib(n-2)
+  # returns the nth element of the Fib sequence
+  # elegent for finding the nth element but
+  # not an efficient way to build a list of the
+  # sequeence. Calculting each element would
+  # require building the entire sequence over
+  # and over again, nearly n^2 * 3 times
+  @spec element(integer) :: integer
+  def element(n) when n < 2, do: 0
+  def element(n) when n < 4, do: 1
+  def element(n), do: element(n-2) + element(n-1)
 
-  def sum_of_evens_to(limit), do: calc_sum(1, 0, 0, limit)
-
-  defp calc_sum(_, fib_val, sum, limit) when fib_val > limit do
-    sum
+  # returns a list of the first n numbers in the Fib sequence
+  @spec sequence_of(integer) :: list
+  def sequence_of(size) do
+    build_seq([], size)
   end
 
-  defp calc_sum(n, fib_val, sum, limit) do
-    case rem fib_val, 2 do
-      0 -> calc_sum(n+1, fib(n), sum + fib_val, limit)
-      1 -> calc_sum(n+1, fib(n), sum, limit)
+  # given an integer n,
+  # returns a list of the Fib sequence up to n
+  @spec sequence_to(integer) :: list
+  def sequence_to(n) do
+    build_seq_to(n, [])
+  end
+
+  # given a limit, an empty list or valid Fib sequence
+  # returns a list of the Fib sequence who's last element
+  # is no greater than the limit
+  @spec build_seq_to(integer, list) :: String | list
+  def build_seq_to(limit, seq) do
+    # next_val = 13
+    next_val = next(seq)
+    if next_val <= limit do
+      build_seq_to(limit, [next_val | seq ])
+    else
+      Enum.reverse seq
     end
   end
+
+  # koan: return the sum of the even
+  # fib values up to a given limit
+  @spec sum_of_evens_to(integer) :: integer
+  def sum_of_evens_to(limit) do
+    build_seq_to(limit, [])
+    |> Enum.filter(fn e -> rem(e, 2) == 0 end)
+    |> Enum.sum
+  end
+
+# Private methods
+
+  # builds a fib sequence of the first n elements
+  # seq must be an empty list or a valid sequence
+  # the list must be reversed before return
+  defp build_seq(seq, n) do
+    if Enum.count(seq) >= n do
+      Enum.reverse seq
+    else
+      build_seq([next(seq) | seq], n)
+    end
+  end
+
+  # Given an empty list or valid fib sequence,
+  # returns the next element
+  defp next(seq) do
+    case Enum.count(seq) do
+      0 -> 0
+      1 -> 1
+      2 -> 1
+      _ -> sum_of_first_two(seq)
+    end
+  end
+
+  # Returns the sum of the first two elements of a list
+  defp sum_of_first_two(seq) do
+    [a, b | _] = seq
+    a + b
+  end
+
 end

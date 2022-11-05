@@ -4,8 +4,8 @@ defmodule FibTest do
 
   test "it calculates the n-th number in the fibonacci sequence" do
     # 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233
-    assert Fib.fib(4)  == 2
-    assert Fib.fib(10) == 34
+    assert Fib.element(4)  == 2
+    assert Fib.element(10) == 34
   end
 
   test "it calculates the sum of the even fibonacci numbers" do
