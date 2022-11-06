@@ -1,17 +1,19 @@
 defmodule Rn do
-  def romanize(arabic) when arabic >= 1000, do: extract(arabic, 1000, "M")
-  def romanize(arabic) when arabic >= 900, do: extract(arabic, 900, "CM")
-  def romanize(arabic) when arabic >= 500, do: extract(arabic, 500, "D")
-  def romanize(arabic) when arabic >= 400, do: extract(arabic, 400, "CD")
-  def romanize(arabic) when arabic >= 100, do: extract(arabic, 100, "C")
-  def romanize(arabic) when arabic >= 90, do: extract(arabic, 90, "XC")
-  def romanize(arabic) when arabic >= 50, do: extract(arabic, 50, "L")
-  def romanize(arabic) when arabic >= 40, do: extract(arabic, 40, "XL")
-  def romanize(arabic) when arabic >= 10, do: extract(arabic, 10, "X")
-  def romanize(9), do: "IX"
-  def romanize(arabic) when arabic >= 5, do: extract(arabic, 5, "V")
-  def romanize(4), do: "IV"
-  def romanize(arabic), do: String.duplicate("I", arabic)
+  @spec romanize(integer) :: String
+  def romanize(n) when n >= 1000, do: extract(n, 1000, "M")
+  def romanize(n) when n >= 900, do: extract(n, 900, "CM")
+  def romanize(n) when n >= 500, do: extract(n, 500, "D")
+  def romanize(n) when n >= 400, do: extract(n, 400, "CD")
+  def romanize(n) when n >= 100, do: extract(n, 100, "C")
+  def romanize(n) when n >= 90, do: extract(n, 90, "XC")
+  def romanize(n) when n >= 50, do: extract(n, 50, "L")
+  def romanize(n) when n >= 40, do: extract(n, 40, "XL")
+  def romanize(n) when n >= 10, do: extract(n, 10, "X")
+  def romanize(n) when n == 9, do: "IX"
+  def romanize(n) when n >= 5, do: extract(n, 5, "V")
+  def romanize(n) when n == 4, do: "IV"
+  def romanize(n), do: String.duplicate("I", n)
+
 
   defp extract(arabic, n, roman) do
     String.duplicate(roman, div(arabic, n)) <> romanize(rem(arabic, n))
