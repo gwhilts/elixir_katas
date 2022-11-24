@@ -1,5 +1,5 @@
 defmodule Rn do
-  @spec romanize(integer) :: String
+  @spec romanize(integer()) :: String.t()
   def romanize(n) when n >= 1000, do: extract(n, 1000, "M")
   def romanize(n) when n >= 900, do: extract(n, 900, "CM")
   def romanize(n) when n >= 500, do: extract(n, 500, "D")
