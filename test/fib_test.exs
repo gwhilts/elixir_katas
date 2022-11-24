@@ -15,4 +15,9 @@ defmodule FibTest do
     assert Fib.sum_of_evens_to(10) == 10
     assert Fib.sum_of_evens_to(90) == 44
   end
+
+  test "it returns a list of the first n fibonacci numbers" do
+    assert Fib.sequence_of(5) == [0, 1, 1, 2, 3]
+    assert Fib.sequence_of(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+  end
 end
