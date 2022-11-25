@@ -3,7 +3,7 @@ defmodule FibTest do
   doctest Fib
 
   describe "element/1" do
-    test "it calculates the n-th number in the fibonacci sequence" do
+    test "calculates the n-th number in the fibonacci sequence" do
       # 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233
       assert Fib.element(4)  == 2
       assert Fib.element(10) == 34
@@ -11,7 +11,7 @@ defmodule FibTest do
   end
 
   describe "sum_of_evens/1" do
-    test "it calculates the sum of the even fibonacci numbers" do
+    test "calculates the sum of the even fibonacci numbers" do
       # _, _, _, 2, _, _, 8, _, _, 34, _, _
       # 2 + 8 + 34
       # 44
@@ -21,7 +21,7 @@ defmodule FibTest do
   end
 
   describe "sequence_of/1" do
-    test "it returns a list of the first n fibonacci numbers" do
+    test "returns a list of the first n fibonacci numbers" do
       assert Fib.sequence_of(5) == [0, 1, 1, 2, 3]
       assert Fib.sequence_of(10) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
     end
