@@ -59,3 +59,32 @@ Tests can be executed by running `mix test`
 
 * `ThreesAndFives.sum_of_multiples_to/1`
     * _returns the sum of all the multiples of three and five less than the given limit_
+
+
+### Flatten List
+
+**Problem**: 
+
+(_from **Programming Elixir ≥ 1.6**, Chapter 6, by Dave Thomas_)
+
+"(Hard) Write a flatten(list) function that takes a list that may contain
+any number of sublists, which themselves may contain sublists, to
+any depth. It returns the elements of these lists as a flat list.”
+
+    `​iex>​ MyList.flatten([ 1, [ 2, 3, [4] ], 5, [[[6]]]])​ [1,2,3,4,5,6]`
+
+Hint: You may have to use Enum.reverse to get your result in the
+correct order.”
+
+**Files**:
+
+* Module: `lib/my_list.ex`
+* Tests: `tests\my_list_test.exs`
+
+**Functions**:
+
+* `MyList.flatten/1`
+    * _returns a flat list containing all the elements of a given list containing any number of nested sublists._
+
+
+
