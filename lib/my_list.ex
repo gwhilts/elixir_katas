@@ -4,11 +4,12 @@ defmodule MyList do
   @doc """
     returns a flat list containing all the elements of a given list containing any number of nested sublists.
 
-     ## Examples
+    ## Examples
 
-    ​iex>​ MyList.flatten([ 1, [ 2, 3, [4] ], 5, [[[6]]]])​ 
-    [1,2,3,4,5,6]
+    iex> MyList.flatten([1, [2, 3, [4]], 5, [[[6]]]])
+    [1, 2, 3, 4, 5, 6]
   """
   def flatten([]), do: []
-  def flatten(list), do: :implement_me
+  def flatten([h | t]), do: flatten(h) ++ flatten(t)
+  def flatten(e), do: [e]
 end
