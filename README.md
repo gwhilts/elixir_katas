@@ -65,13 +65,14 @@ Tests can be executed by running `mix test`
 
 **Problem**: 
 
-(_from **Programming Elixir ≥ 1.6**, Chapter 6, by Dave Thomas_)
+(_Exercise "ListsAndRecursion-6" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
 
 "(Hard) Write a flatten(list) function that takes a list that may contain
 any number of sublists, which themselves may contain sublists, to
 any depth. It returns the elements of these lists as a flat list.”
 
-    `​iex>​ MyList.flatten([ 1, [ 2, 3, [4] ], 5, [[[6]]]])​ [1,2,3,4,5,6]`
+    ​iex>​ MyList.flatten([ 1, [ 2, 3, [4] ], 5, [[[6]]] ])​
+    [1,2,3,4,5,6]
 
 Hint: You may have to use Enum.reverse to get your result in the
 correct order.”
@@ -87,4 +88,32 @@ correct order.”
     * _returns a flat list containing all the elements of a given list containing any number of nested sublists._
 
 
+### Enum functions
+
+**Problem**: 
+
+(_Exercise "ListsAndRecursion-5" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Implement the following Enum functions using no library functions or
+list comprehensions: all?, each, filter, split, and take.”
+
+**Files**:
+
+* Module: `lib/my_list.ex`
+* Tests: `tests\my_list_test.exs`
+
+**Functions**:
+
+* `MyList.all?/2`
+    * _returns true if all elemements of a list return a truthy value when applied to a given function._
+* `MyList.each/2`
+    * _invokes the given fun for each element in a list._
+* `MyList.filter/2`
+    * _returns a list of all elements of a list that return a truthy value when applied to a given function._
+* `MyList.split/3`
+    * _returns the elements of a list within a given range._
+    * _(ignoring negative values and range boundries for now)_
+* `MyList.take/2`
+    * _returns the first n number of elements in a list_
+    * _(ignoring negative values and range boundries for now)_
 
