@@ -106,6 +106,8 @@ list comprehensions: all?, each, filter, split, and take.”
 
 * `MyList.all?/2`
     * _returns true if all elemements of a list return a truthy value when applied to a given function._
+* `MyList.any?/2`
+    * _returns true if any elemement of a list return a truthy value when applied to a given function._
 * `MyList.each/2`
     * _invokes the given fun for each element in a list._
 * `MyList.filter/2`
