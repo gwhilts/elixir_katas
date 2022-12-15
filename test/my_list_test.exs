@@ -1,8 +1,10 @@
 defmodule MyListTest do
   use ExUnit.Case
+  import ExUnit.CaptureIO
   doctest MyList
 
   def even?(n), do: rem(n, 2) == 0
+  def shout(s), do: IO.puts(String.upcase(s))
 
   describe "flatten/1" do
     test "returns an empty list when given an empty list" do
@@ -70,10 +72,16 @@ defmodule MyListTest do
   end
 
   describe "each/2" do
+    test "it returns :ok when finished" do
+      assert MyList.each([], &shout/1) == :ok
+    end
+
     @tag :pending
     test "invokes the given fun for each element in a list." do
-      false
-      # ???? assert capture_io(MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))) == "A\nB\nC"
+      # Not sure how to test this. Code below doen't work because it feeds the :ok result to
+      # the capture_io/1 function along with the stdout capture.
+      # Doctest is passing, but the screen output is annoying.
+      assert capture_io(MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))) == "A\nB\nD\n"
     end
   end
 
