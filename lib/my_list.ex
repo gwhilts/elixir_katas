@@ -32,6 +32,25 @@ defmodule MyList do
     each(tail, f)
   end
 
+  @spec filter([any], fun) :: [any]
+  @doc """
+    returns a list of all elements of a list that return a truthy value when applied to a given function.
+
+    ## Exercises
+
+    iex> MyList.filter([1, 2, 3, 4], & rem(&1, 2) == 0)
+    [2, 4]
+  """
+  def filter(list, f), do: filter(list, f, [])
+  defp filter([], _, result), do: result
+  defp filter([h | tail], f, result) do
+    if f.(h) do
+      filter(tail, f, (result ++ [h]))
+    else
+      filter(tail, f, result)
+    end
+  end
+
   @spec flatten([any]) :: [any]
   @doc """
     returns a flat list containing all the elements of a given list containing any number of nested sublists.
