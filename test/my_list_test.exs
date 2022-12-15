@@ -96,9 +96,20 @@ defmodule MyListTest do
   end
 
   describe "split/3" do
-    @tag :pending
+    test "returns an empty list when given an empty list" do
+      assert MyList.split([], 2, 2) == []
+    end
+
     test "returns the elements of a list within a given range." do
-      false
+      assert MyList.split([1, 2, 3, 4], 1, 2) == [2, 3]
+    end
+
+    test "ignores start values that are out of range" do
+      assert MyList.split([1, 2, 3, 4], 10, 1) == []
+    end
+
+    test "when the range extends past the length of the list it returns only the elements up to the end" do
+      assert MyList.split([1, 2, 3], 1, 10) == [2, 3]
     end
   end
 
