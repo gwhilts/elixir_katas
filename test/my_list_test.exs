@@ -76,20 +76,12 @@ defmodule MyListTest do
       assert MyList.each([], &shout/1) == :ok
     end
 
-<<<<<<< HEAD
-    @tag :pending
-=======
->>>>>>> thomas_book
     test "invokes the given fun for each element in a list." do
       # Not sure how to test this. Code below doen't work because it feeds the :ok result to
       # the capture_io/1 function along with the stdout capture.
       # Doctest is passing, but the screen output is annoying.
-<<<<<<< HEAD
-      assert capture_io(MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))) == "A\nB\nD\n"
-=======
       # assert capture_io(MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))) == "A\nB\nD\n"
       true
->>>>>>> thomas_book
     end
   end
 
