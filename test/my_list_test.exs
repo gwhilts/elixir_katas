@@ -114,9 +114,12 @@ defmodule MyListTest do
   end
 
   describe "take/2" do
-    @tag :pending
     test "returns the first n number of elements in a list." do
-      false
+      assert MyList.take([1, 2, 3, 4], 2) == [1, 2]
+    end
+
+    test "when the count exceeds the length of the list, it returns the only the elements up to the end" do
+      assert MyList.take([1, 2, 3, 4], 10) == [1, 2, 3, 4]
     end
   end
 end

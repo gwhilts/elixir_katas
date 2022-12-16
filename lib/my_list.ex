@@ -75,7 +75,21 @@ defmodule MyList do
   """
   def split(list, start, count), do: split(list, start, count, 0, [])
   defp split([], _, _, _, result), do: result
-  defp split(_list, start, count, index, result) when index >= start + count, do: result
+  defp split(_, start, count, index, result) when index >= start + count, do: result
   defp split([_ | tail], start, count, index, result) when index < start, do: split(tail, start, count, index + 1, result)
   defp split([h | tail], start, count, index, result), do: split(tail, start, count, index + 1, result ++ [h])
+
+  @spec take([any], pos_integer) :: [any]
+    @doc """
+      returns the first n number of a given list
+
+      ## Examples
+
+      iex> MyList.take([1, 2, 3, 4], 2)
+      [1, 2]
+    """
+  def take(list, count), do: take(list, count, 0, [])
+  defp take([], _, _, result), do: result
+  defp take(_, count, index, result) when index >= count, do: result
+  defp take([h | tail], count, index, result), do: take(tail, count, index + 1, result ++ [h])
 end
