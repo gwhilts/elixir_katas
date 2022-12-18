@@ -60,6 +60,36 @@ Tests can be executed by running `mix test`
 * `ThreesAndFives.sum_of_multiples_to/1`
     * _returns the sum of all the multiples of three and five less than the given limit_
 
+### mapsum
+
+**Problem**: 
+
+(_Exercise "ListsAndRecursion-1" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Write a mapsum function that takes a list and a function. It
+applies the function to each element of the list and then sums the
+result, so​ 
+
+    ​iex>​ MyList.mapsum [1, 2, 3], &(&1 * &1)​
+    14
+
+Obviously this could easly be done using `Enum.reduce/3` or `Enum.map/2` |> `Enum.sum/1`:
+
+* cheating 1: `Enum.reduce(list, 0, & f.(&1) + &2)`
+* cheating 2: `Enum.map(list, f) |> Enum.sum()`
+
+But I think the point of the exercise is to use recursion to recreate the reduce funtionality.
+
+**Files**:
+
+* lib/my_list.ex
+* test/my_list_test.exs
+
+**Functions**:
+
+* `MyList.mapsum/2`
+    * applies a function to the given list and returns the sum of all the results
+
 
 ### Flatten List
 
