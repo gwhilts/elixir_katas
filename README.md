@@ -149,3 +149,18 @@ list comprehensions: all?, each, filter, split, and take.”
     * _returns the first n number of elements in a list_
     * _(ignoring negative values and range boundries for now)_
 
+
+### Max List
+
+**Problem**: 
+
+(_Exercise "ListsAndRecursion-2" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Write a max(list) that returns the element with the maximum value in
+the list. (This is slightly trickier than it sounds.)”
+
+**Files**:
+
+* Module: `lib/my_list.ex`
+* Tests: `tests\my_list_test.exs`
+
