@@ -189,4 +189,25 @@ character greater than _z_." ​ 
 
 **Functions**:
 
-* MyList.caesar/1
+* MyList.caesar/2
+
+### Span
+
+**Problem**:
+
+(_Exercise "ListsAndRecursion-4" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Write a function MyList.span(from, to) that returns a list of the
+numbers from from up to to.”
+
+I assume this means to not use the obvious Enum.to_list(from..to), but to reimplement
+it with a new method to achieve the same effect.
+
+**Files**:
+
+* Module: `lib/my_list.ex`
+* Tests: `tests\my_list_test.exs`
+
+**Functions**:
+
+* MyList.span/2

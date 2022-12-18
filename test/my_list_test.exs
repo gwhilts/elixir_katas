@@ -118,6 +118,13 @@ defmodule MyListTest do
     end
   end
 
+  describe "span/2" do
+    test "returns a list of the numbers from from one integer up to another." do
+      assert MyList.span(3, 7) == [3, 4, 5, 6, 7]
+      assert MyList.span(?s, ?u) == 'stu'
+    end
+  end
+
   describe "split/3" do
     test "returns an empty list when given an empty list" do
       assert MyList.split([], 2, 2) == []

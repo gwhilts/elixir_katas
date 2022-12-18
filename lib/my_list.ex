@@ -1,59 +1,59 @@
 defmodule MyList do
 
-  @spec all?([any], fun) :: boolean
   @doc """
-    returns true if any elemements of a list return a truthy value when applied to a given function.
+  returns true if any elemements of a list return a truthy value when applied to a given function.
   """
+  @spec all?([any], fun) :: boolean
   def all?([], _), do: true
   def all?([h | tail], f), do: f.(h) and all?(tail, f)
 
-  @spec any?([any], fun) :: boolean
   @doc """
-    returns true if any elemements of a list return a truthy value when applied to a given function.
+  returns true if any elemements of a list return a truthy value when applied to a given function.
   """
+  @spec any?([any], fun) :: boolean
   def any?([], _), do: false
   def any?([h | tail], f), do: f.(h) or any?(tail, f)
 
-  @spec caesar(charlist, pos_integer) :: charlist
   @doc """
-    shifts the characters in a given charlist n steps up the alphabet
+  shifts the characters in a given charlist n steps up the alphabet
 
-    ## Examples:
+  ## Examples:
 
-    iex> MyList.caesar('ryvkve', 13)
-    'elixir'
+  iex> MyList.caesar('ryvkve', 13)
+  'elixir'
   """
+  @spec caesar(charlist, pos_integer) :: charlist
   def caesar(chars, n) do
     Enum.map(chars, &(if (&1 + n > ?z), do: &1 + n - 26, else: &1 + n))
   end
 
-  @spec each([any], fun) :: :ok
   @doc """
-    invokes the given fun for each element in a list.
+  invokes the given fun for each element in a list.
 
-    ## Examples
+  ## Examples
 
-    iex> MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))
-    A
-    B
-    C
-    :ok
+  iex> MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))
+  A
+  B
+  C
+  :ok
   """
+  @spec each([any], fun) :: :ok
   def each([], _), do: :ok
   def each([h | tail], f) do
     f.(h)
     each(tail, f)
   end
 
-  @spec filter([any], fun) :: [any]
   @doc """
-    returns a list of all elements of a list that return a truthy value when applied to a given function.
+  returns a list of all elements of a list that return a truthy value when applied to a given function.
 
-    ## Examples
+  ## Examples
 
-    iex> MyList.filter([1, 2, 3, 4], & rem(&1, 2) == 0)
-    [2, 4]
+  iex> MyList.filter([1, 2, 3, 4], & rem(&1, 2) == 0)
+  [2, 4]
   """
+  @spec filter([any], fun) :: [any]
   def filter(list, f), do: filter(list, f, [])
   defp filter([], _, result), do: result
   defp filter([h | tail], f, result) do
@@ -64,15 +64,15 @@ defmodule MyList do
     end
   end
 
-  @spec flatten([any]) :: [any]
   @doc """
-    returns a flat list containing all the elements of a given list containing any number of nested sublists.
+  returns a flat list containing all the elements of a given list containing any number of nested sublists.
 
-    ## Examples
+  ## Examples
 
-    iex> MyList.flatten([1, [2, 3, [4]], 5, [[[6]]]])
-    [1, 2, 3, 4, 5, 6]
+  iex> MyList.flatten([1, [2, 3, [4]], 5, [[[6]]]])
+  [1, 2, 3, 4, 5, 6]
   """
+  @spec flatten([any]) :: [any]
   def flatten([]), do: []
   def flatten([h | t]), do: flatten(h) ++ flatten(t)
   def flatten(e), do: [e]
@@ -91,15 +91,31 @@ defmodule MyList do
   defp maximum([], n), do: n
   defp maximum([h | tail], n), do: if h > n, do: maximum(tail, h), else: maximum(tail, n)
 
-  @spec split([any], pos_integer, pos_integer) :: [any]
   @doc """
-    returns the elements of a list within a given range
+  returns a list of the numbers from from one integer up to another
 
-    ## Examples
+  i.e. emulates behavior of Enum.to_list(from..to) for positive
+  integers of increasing value
 
-    iex> MyList.split([1, 2, 3, 4], 1, 2)
-    [2, 3]
+  ## Examples
+
+  iex> MyList.span(13, 17)
+  [13, 14, 15, 16, 17]
   """
+  @spec span(integer, integer) :: [integer]
+  def span(start, stop), do: span([], start, stop)
+  defp span(list, n, stop) when n > stop, do: list
+  defp span(list, n, stop), do: span(list ++ [n], n + 1, stop)
+
+  @doc """
+  returns the elements of a list within a given range
+
+  ## Examples
+
+  iex> MyList.split([1, 2, 3, 4], 1, 2)
+  [2, 3]
+  """
+  @spec split([any], pos_integer, pos_integer) :: [any]
   def split(list, start, count), do: split(list, start, count, 0, [])
   defp split([], _, _, _, result), do: result
   defp split(_, start, count, index, result) when index >= start + count, do: result
