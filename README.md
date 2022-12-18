@@ -64,7 +64,7 @@ Tests can be executed by running `mix test`
 
 **Problem**: 
 
-(_Exercise "ListsAndRecursion-1" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+(_Exercise "ListsAndRecursion-1" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
 
 “Write a mapsum function that takes a list and a function. It
 applies the function to each element of the list and then sums the
@@ -95,7 +95,7 @@ But I think the point of the exercise is to use recursion to recreate the reduce
 
 **Problem**: 
 
-(_Exercise "ListsAndRecursion-6" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+(_Exercise "ListsAndRecursion-6" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
 
 "(Hard) Write a flatten(list) function that takes a list that may contain
 any number of sublists, which themselves may contain sublists, to
@@ -122,7 +122,7 @@ correct order.”
 
 **Problem**: 
 
-(_Exercise "ListsAndRecursion-5" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+(_Exercise "ListsAndRecursion-5" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
 
 “Implement the following Enum functions using no library functions or
 list comprehensions: all?, each, filter, split, and take.”
@@ -154,7 +154,7 @@ list comprehensions: all?, each, filter, split, and take.”
 
 **Problem**: 
 
-(_Exercise "ListsAndRecursion-2" from Chapter 10 of **Programming Elixir ≥ 1.6** by Dave Thomas_)
+(_Exercise "ListsAndRecursion-2" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
 
 “Write a max(list) that returns the element with the maximum value in
 the list. (This is slightly trickier than it sounds.)”
@@ -164,3 +164,29 @@ the list. (This is slightly trickier than it sounds.)”
 * Module: `lib/my_list.ex`
 * Tests: `tests\my_list_test.exs`
 
+**Functions**:
+
+* MyList.max/1
+
+### Caesaar
+
+**Problem**:
+
+(_Exercise "ListsAndRecursion-3" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“An Elixir single-quoted string is actually a list of individual
+character codes. Write a caesar(list, n) function that adds n to
+each list element, wrapping if the addition results in a
+character greater than _z_." ​ 
+
+    ​iex>​ MyList.caesar(​'ryvkve'​, 13)​ 
+    ?????? :)
+
+**Files**:
+
+* Module: `lib/my_list.ex`
+* Tests: `tests\my_list_test.exs`
+
+**Functions**:
+
+* MyList.caesar/1

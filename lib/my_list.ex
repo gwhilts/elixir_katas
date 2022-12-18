@@ -14,6 +14,19 @@ defmodule MyList do
   def any?([], _), do: false
   def any?([h | tail], f), do: f.(h) or any?(tail, f)
 
+  @spec caesar(charlist, pos_integer) :: charlist
+  @doc """
+    shifts the characters in a given charlist n steps up the alphabet
+
+    ## Examples:
+
+    iex> MyList.caesar('ryvkve', 13)
+    'elixir'
+  """
+  def caesar(chars, n) do
+    Enum.map(chars, &(if (&1 + n > ?z), do: &1 + n - 26, else: &1 + n))
+  end
+
   @spec each([any], fun) :: :ok
   @doc """
     invokes the given fun for each element in a list.
@@ -36,7 +49,7 @@ defmodule MyList do
   @doc """
     returns a list of all elements of a list that return a truthy value when applied to a given function.
 
-    ## Exercises
+    ## Examples
 
     iex> MyList.filter([1, 2, 3, 4], & rem(&1, 2) == 0)
     [2, 4]
@@ -64,11 +77,6 @@ defmodule MyList do
   def flatten([h | t]), do: flatten(h) ++ flatten(t)
   def flatten(e), do: [e]
 
-  @spec max([integer]) :: integer
-  def max([h | tail]), do: maximum(tail, h)
-  defp maximum([], n), do: n
-  defp maximum([h | tail], n), do: if h > n, do: maximum(tail, h), else: maximum(tail, n)
-
   @spec mapsum([integer], fun) :: integer
   def mapsum(list, f) do
     # cheating 1: Enum.reduce(list, 0, & f.(&1) + &2)
@@ -77,6 +85,11 @@ defmodule MyList do
   end
   defp mapsum([], _, sum), do: sum
   defp mapsum([h | tail], f, sum), do: mapsum(tail, f, sum + f.(h))
+
+  @spec max([integer]) :: integer
+  def max([h | tail]), do: maximum(tail, h)
+  defp maximum([], n), do: n
+  defp maximum([h | tail], n), do: if h > n, do: maximum(tail, h), else: maximum(tail, n)
 
   @spec split([any], pos_integer, pos_integer) :: [any]
   @doc """
