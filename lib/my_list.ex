@@ -64,6 +64,15 @@ defmodule MyList do
   def flatten([h | t]), do: flatten(h) ++ flatten(t)
   def flatten(e), do: [e]
 
+  @spec mapsum([integer], fun) :: integer
+  def mapsum(list, f) do
+    # cheating 1: Enum.reduce(list, 0, & f.(&1) + &2)
+    # cheating 2: Enum.map(list, f) |> Enum.sum()
+    mapsum(list, f, 0)
+  end
+  defp mapsum([], _, sum), do: sum
+  defp mapsum([h | tail], f, sum), do: mapsum(tail, f, sum + f.(h))
+
   @spec split([any], pos_integer, pos_integer) :: [any]
   @doc """
     returns the elements of a list within a given range

@@ -3,8 +3,15 @@ defmodule MyListTest do
   import ExUnit.CaptureIO
   doctest MyList
 
+  def double(n), do: n * 2
   def even?(n), do: rem(n, 2) == 0
   def shout(s), do: IO.puts(String.upcase(s))
+
+  describe "mapsum/2" do
+    test "applies a function to the given list and returns the sum of all the results" do
+      assert MyList.mapsum([1, 3, 5], &double/1) == 18
+    end
+  end
 
   describe "flatten/1" do
     test "returns an empty list when given an empty list" do

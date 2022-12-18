@@ -73,6 +73,13 @@ result, so​ 
     ​iex>​ MyList.mapsum [1, 2, 3], &(&1 * &1)​
     14
 
+Obviously this could easly be done using `Enum.reduce/3` or `Enum.map/2` |> `Enum.sum/1`:
+
+* cheating 1: `Enum.reduce(list, 0, & f.(&1) + &2)`
+* cheating 2: `Enum.map(list, f) |> Enum.sum()`
+
+But I think the point of the exercise is to use recursion to recreate the reduce funtionality.
+
 **Files**:
 
 * lib/my_list.ex
