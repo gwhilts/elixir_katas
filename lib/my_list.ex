@@ -64,6 +64,11 @@ defmodule MyList do
   def flatten([h | t]), do: flatten(h) ++ flatten(t)
   def flatten(e), do: [e]
 
+  @spec max([integer]) :: integer
+  def max([h | tail]), do: maximum(tail, h)
+  defp maximum([], n), do: n
+  defp maximum([h | tail], n), do: if h > n, do: maximum(tail, h), else: maximum(tail, n)
+
   @spec mapsum([integer], fun) :: integer
   def mapsum(list, f) do
     # cheating 1: Enum.reduce(list, 0, & f.(&1) + &2)
