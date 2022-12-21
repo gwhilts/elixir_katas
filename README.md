@@ -14,7 +14,7 @@ Tests can be executed by running `mix test`
 
 **Problem**: 
 
-> Convert Arabic versions of numbers to their equivalent Roman numeral versions.
+Convert Arabic versions of numbers to their equivalent Roman numeral versions.
 
 **File**:
 
@@ -30,7 +30,7 @@ Tests can be executed by running `mix test`
 
 **Problem**:
 
-> By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 **Files**: 
 
@@ -68,7 +68,7 @@ Tests can be executed by running `mix test`
 
 “Write a mapsum function that takes a list and a function. It
 applies the function to each element of the list and then sums the
-result, so​ 
+result, so​
 
     ​iex>​ MyList.mapsum [1, 2, 3], &(&1 * &1)​
     14
@@ -82,14 +82,106 @@ But I think the point of the exercise is to use recursion to recreate the reduce
 
 **Files**:
 
-* lib/my_list.ex
-* test/my_list_test.exs
+* `lib/prag_prog/my_list.ex`
+* `test/prag_prog/my_list_test.exs`
 
 **Functions**:
 
-* `MyList.mapsum/2`
+* `PragProg.MyList.mapsum/2`
     * applies a function to the given list and returns the sum of all the results
 
+### ListsAndRecursion-2: Max List
+
+**Problem**: 
+
+(_Exercise "ListsAndRecursion-2" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Write a max(list) that returns the element with the maximum value in
+the list. (This is slightly trickier than it sounds.)”
+
+**Files**:
+
+* Module: `lib/prag_prog/my_list.ex`
+* Tests: `test/prag_prog/my_list_test.exs`
+
+**Functions**:
+
+* `PragProg.MyList.max/1`
+
+### ListsAndRecursion-3: Caesaar
+
+**Problem**:
+
+(_Exercise "ListsAndRecursion-3" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“An Elixir single-quoted string is actually a list of individual
+character codes. Write a caesar(list, n) function that adds n to
+each list element, wrapping if the addition results in a
+character greater than _z_." ​ 
+
+    ​iex>​ MyList.caesar(​'ryvkve'​, 13)​ 
+    ?????? :)
+
+**Files**:
+
+* Module: `lib/prag_prog/my_list.ex`
+* Tests: `test/prag_prog/my_list_test.exs`
+
+**Functions**:
+
+* `PragProg.MyList.caesar/2`
+
+### ListsAndRecursion-4: Span
+
+**Problem**:
+
+(_Exercise "ListsAndRecursion-4" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Write a function MyList.span(from, to) that returns a list of the
+numbers from from up to to.”
+
+I assume this means to not use the obvious Enum.to_list(from..to), but to reimplement
+it with a new method to achieve the same effect.
+
+**Files**:
+
+* Module: `lib/prag_prog/my_list.ex`
+* Tests: `test/prag_prog/my_list_test.exs`
+
+**Functions**:
+
+* `PragProg.MyList.span/2`
+
+### ListsAndRecursion-5: Enum Functions
+
+**Problem**: 
+
+(_Exercise "ListsAndRecursion-5" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“Implement the following Enum functions using no library functions or
+list comprehensions: all?, each, filter, split, and take.”
+
+**Files**:
+
+* Module: `lib/prag_prog/my_list.ex`
+* Tests: `test/prag_prog/my_list_test.exs`
+
+**Functions**:
+
+* `PragProg.MyList.all?/2`
+    * _returns true if all elemements of a list return a truthy value when applied to a given function._
+* `PragProg.MyList.any?/2`
+    * _returns true if any elemement of a list return a truthy value when applied to a given function._
+* `PragProg.MyList.each/2`
+    * _invokes the given fun for each element in a list._
+* `PragProg.MyList.filter/2`
+    * _returns a list of all elements of a list that return a truthy value when applied to a given function._
+* `PragProg.MyList.split/3`
+    * _returns the elements of a list within a given range._
+    * _(ignoring negative values and range boundries for now)_
+* `PragProg.MyList.take/2`
+    * _returns the first n number of elements in a list_
+    * _(ignoring negative values and range boundries for now)_
 
 ### ListsAndRecursion-6: Flatten List
 
@@ -109,108 +201,13 @@ correct order.”
 
 **Files**:
 
-* Module: `lib/my_list.ex`
-* Tests: `tests\my_list_test.exs`
+* Module: `lib/prag_prog/my_list.ex`
+* Tests: `test/prag_prog/my_list_test.exs`
 
 **Functions**:
 
-* `MyList.flatten/1`
+* `PragProg.MyList.flatten/1`
     * _returns a flat list containing all the elements of a given list containing any number of nested sublists._
-
-
-### ListsAndRecursion-5: Enum Functions
-
-**Problem**: 
-
-(_Exercise "ListsAndRecursion-5" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
-
-“Implement the following Enum functions using no library functions or
-list comprehensions: all?, each, filter, split, and take.”
-
-**Files**:
-
-* Module: `lib/my_list.ex`
-* Tests: `tests\my_list_test.exs`
-
-**Functions**:
-
-* `MyList.all?/2`
-    * _returns true if all elemements of a list return a truthy value when applied to a given function._
-* `MyList.any?/2`
-    * _returns true if any elemement of a list return a truthy value when applied to a given function._
-* `MyList.each/2`
-    * _invokes the given fun for each element in a list._
-* `MyList.filter/2`
-    * _returns a list of all elements of a list that return a truthy value when applied to a given function._
-* `MyList.split/3`
-    * _returns the elements of a list within a given range._
-    * _(ignoring negative values and range boundries for now)_
-* `MyList.take/2`
-    * _returns the first n number of elements in a list_
-    * _(ignoring negative values and range boundries for now)_
-
-
-### ListsAndRecursion-2: Max List
-
-**Problem**: 
-
-(_Exercise "ListsAndRecursion-2" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
-
-“Write a max(list) that returns the element with the maximum value in
-the list. (This is slightly trickier than it sounds.)”
-
-**Files**:
-
-* Module: `lib/my_list.ex`
-* Tests: `tests\my_list_test.exs`
-
-**Functions**:
-
-* MyList.max/1
-
-### ListsAndRecursion-3: Caesaar
-
-**Problem**:
-
-(_Exercise "ListsAndRecursion-3" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
-
-“An Elixir single-quoted string is actually a list of individual
-character codes. Write a caesar(list, n) function that adds n to
-each list element, wrapping if the addition results in a
-character greater than _z_." ​ 
-
-    ​iex>​ MyList.caesar(​'ryvkve'​, 13)​ 
-    ?????? :)
-
-**Files**:
-
-* Module: `lib/my_list.ex`
-* Tests: `tests\my_list_test.exs`
-
-**Functions**:
-
-* MyList.caesar/2
-
-### ListsAndRecursion-4: Span
-
-**Problem**:
-
-(_Exercise "ListsAndRecursion-4" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
-
-“Write a function MyList.span(from, to) that returns a list of the
-numbers from from up to to.”
-
-I assume this means to not use the obvious Enum.to_list(from..to), but to reimplement
-it with a new method to achieve the same effect.
-
-**Files**:
-
-* Module: `lib/my_list.ex`
-* Tests: `tests\my_list_test.exs`
-
-**Functions**:
-
-* MyList.span/2
 
 ### ListsAndRecursion-8: Sales Tax
 
@@ -224,16 +221,16 @@ list (I wish it were that simple.…):​ 
 
     tax_rates = [ NC: 0.075, TX: 0.08 ]
 
-Here’s a list of orders:​
+Here’s a list of orders:​  
  
-    orders = [  [ id: 123, ship_to: :NC, net_amount: 100.00 ],
-                [ id: 124, ship_to: :OK, net_amount:  35.50 ],
-                [ id: 125, ship_to: :TX, net_amount:  24.00 ],
-                [ id: 126, ship_to: :TX, net_amount:  44.80 ],
-                [ id: 127, ship_to: :NC, net_amount:  25.00 ],
-                [ id: 128, ship_to: :MA, net_amount:  10.00 ],
-                [ id: 129, ship_to: :CA, net_amount: 102.00 ],
-                [ id: 130, ship_to: :NC, net_amount:  50.00 ]
+    orders = [  [ id: 123, ship_to: :NC, net_amount: 100.00 ],  
+                [ id: 124, ship_to: :OK, net_amount:  35.50 ],  
+                [ id: 125, ship_to: :TX, net_amount:  24.00 ],  
+                [ id: 126, ship_to: :TX, net_amount:  44.80 ],  
+                [ id: 127, ship_to: :NC, net_amount:  25.00 ],  
+                [ id: 128, ship_to: :MA, net_amount:  10.00 ],  
+                [ id: 129, ship_to: :CA, net_amount: 102.00 ],  
+                [ id: 130, ship_to: :NC, net_amount:  50.00 ]  
     ]
 
 Write a function that takes both lists and returns a copy of the
@@ -243,9 +240,34 @@ applied."
 
 **Files**:
 
-* lib/prag_prog.ex
-* test/prag_prog_test.exs
+* lib/prag_prog/orders.ex
+* test/prag_prog/orders_test.exs
 
 **Functions**:
 
 * PragProg.calc_totals/2
+
+### StringsAndBinaries-5: Centered Column
+
+**Problem**:
+
+(_Exercise "StringsAndBinaries-5" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+"Write a function that takes a list of double-quoted strings and prints each on a
+separate line, centered in a column that has the width of the
+longest string. Make sure it works with UTF characters.​"
+
+    ​iex>​ center([​"​​cat"​, ​"​​zebra"​, ​"​​elephant"​])​ 
+       cat​
+      zebra
+    ​ elephant
+
+
+**Files**:
+
+* `lib/prag_prog/my_string.ex`
+* `test/prag_prog/my_string_test.exs`
+
+**Functions**:
+
+* `PragProg.MyString.center/1`
