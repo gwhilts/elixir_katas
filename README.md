@@ -60,7 +60,7 @@ Tests can be executed by running `mix test`
 * `ThreesAndFives.sum_of_multiples_to/1`
     * _returns the sum of all the multiples of three and five less than the given limit_
 
-### mapsum
+### ListsAndRecursion-1: mapsum
 
 **Problem**: 
 
@@ -91,7 +91,7 @@ But I think the point of the exercise is to use recursion to recreate the reduce
     * applies a function to the given list and returns the sum of all the results
 
 
-### Flatten List
+### ListsAndRecursion-6: Flatten List
 
 **Problem**: 
 
@@ -118,7 +118,7 @@ correct order.”
     * _returns a flat list containing all the elements of a given list containing any number of nested sublists._
 
 
-### Enum Functions
+### ListsAndRecursion-5: Enum Functions
 
 **Problem**: 
 
@@ -150,7 +150,7 @@ list comprehensions: all?, each, filter, split, and take.”
     * _(ignoring negative values and range boundries for now)_
 
 
-### Max List
+### ListsAndRecursion-2: Max List
 
 **Problem**: 
 
@@ -168,7 +168,7 @@ the list. (This is slightly trickier than it sounds.)”
 
 * MyList.max/1
 
-### Caesaar
+### ListsAndRecursion-3: Caesaar
 
 **Problem**:
 
@@ -191,7 +191,7 @@ character greater than _z_." ​ 
 
 * MyList.caesar/2
 
-### Span
+### ListsAndRecursion-4: Span
 
 **Problem**:
 
@@ -211,3 +211,41 @@ it with a new method to achieve the same effect.
 **Functions**:
 
 * MyList.span/2
+
+### ListsAndRecursion-8: Sales Tax
+
+**Problem**:
+
+(_Exercise "ListsAndRecursion-8" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+“The Pragmatic Bookshelf has offices in Texas (TX) and North Carolina (NC), so we have to 
+charge sales tax on orders shipped to these states. The rates can be expressed as a keyword 
+list (I wish it were that simple.…):​ 
+
+    tax_rates = [ NC: 0.075, TX: 0.08 ]
+
+Here’s a list of orders:​
+ 
+    orders = [  [ id: 123, ship_to: :NC, net_amount: 100.00 ],
+                [ id: 124, ship_to: :OK, net_amount:  35.50 ],
+                [ id: 125, ship_to: :TX, net_amount:  24.00 ],
+                [ id: 126, ship_to: :TX, net_amount:  44.80 ],
+                [ id: 127, ship_to: :NC, net_amount:  25.00 ],
+                [ id: 128, ship_to: :MA, net_amount:  10.00 ],
+                [ id: 129, ship_to: :CA, net_amount: 102.00 ],
+                [ id: 130, ship_to: :NC, net_amount:  50.00 ]
+    ]
+
+Write a function that takes both lists and returns a copy of the
+orders, but with an extra field, total_amount, which is the net
+plus sales tax. If a shipment is not to NC or TX, there’s no tax
+applied."
+
+**Files**:
+
+* lib/prag_prog.ex
+* test/prag_prog_test.exs
+
+**Functions**:
+
+* PragProg.calc_totals/2
