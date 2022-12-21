@@ -1,11 +1,14 @@
-defmodule PragProgTest do
+defmodule PragProg.OrdersTest do
   use ExUnit.Case
-  doctest PragProg
+
+  alias PragProg.Orders
+
+  doctest Orders
 
   describe "calc_totals/1" do
     test "returns an empty list if no orders are given" do
       tax_rates = [NC: 0.075, TX: 0.08]
-      assert PragProg.calc_totals([], tax_rates) == []
+      assert Orders.calc_totals([], tax_rates) == []
     end
 
     test "applies the tax rate correctly for one state" do
@@ -13,7 +16,7 @@ defmodule PragProgTest do
       tax_rates = [NC: 0.075]
       expected = [[id: 123, ship_to: :NC, net_amount: 100.00, total_amount: 107.50]]
 
-      assert PragProg.calc_totals(orders, tax_rates) == expected
+      assert Orders.calc_totals(orders, tax_rates) == expected
     end
 
     test "does not add tax to orders in states without specified tax rates" do
@@ -41,7 +44,7 @@ defmodule PragProgTest do
                   [ id: 129, ship_to: :CA, net_amount: 102.00, total_amount: 102.00],
                   [ id: 130, ship_to: :NC, net_amount:  50.00, total_amount:  53.75]]
 
-      assert PragProg.calc_totals(orders, tax_rates) == expected
+      assert Orders.calc_totals(orders, tax_rates) == expected
     end
   end
 end

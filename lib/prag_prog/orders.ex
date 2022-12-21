@@ -1,4 +1,4 @@
-defmodule PragProg do
+defmodule PragProg.Orders do
   def calc_totals([], _), do: []
   def calc_totals(orders, tax_rates) do
     Enum.map(orders, fn order -> add_tax(order, tax_rates) end)
