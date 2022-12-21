@@ -1,4 +1,4 @@
-defmodule MyList do
+defmodule PragProg.MyList do
 
   @doc """
   returns true if any elemements of a list return a truthy value when applied to a given function.
@@ -19,7 +19,7 @@ defmodule MyList do
 
   ## Examples:
 
-  iex> MyList.caesar('ryvkve', 13)
+  iex> PragProg.MyList.caesar('ryvkve', 13)
   'elixir'
   """
   @spec caesar(charlist, pos_integer) :: charlist
@@ -32,7 +32,7 @@ defmodule MyList do
 
   ## Examples
 
-  iex> MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))
+  iex> PragProg.MyList.each(["a", "b", "c"], & IO.puts(String.upcase(&1)))
   A
   B
   C
@@ -50,7 +50,7 @@ defmodule MyList do
 
   ## Examples
 
-  iex> MyList.filter([1, 2, 3, 4], & rem(&1, 2) == 0)
+  iex> PragProg.MyList.filter([1, 2, 3, 4], & rem(&1, 2) == 0)
   [2, 4]
   """
   @spec filter([any], fun) :: [any]
@@ -69,7 +69,7 @@ defmodule MyList do
 
   ## Examples
 
-  iex> MyList.flatten([1, [2, 3, [4]], 5, [[[6]]]])
+  iex> PragProg.MyList.flatten([1, [2, 3, [4]], 5, [[[6]]]])
   [1, 2, 3, 4, 5, 6]
   """
   @spec flatten([any]) :: [any]
@@ -99,7 +99,7 @@ defmodule MyList do
 
   ## Examples
 
-  iex> MyList.span(13, 17)
+  iex> PragProg.MyList.span(13, 17)
   [13, 14, 15, 16, 17]
   """
   @spec span(integer, integer) :: [integer]
@@ -112,7 +112,7 @@ defmodule MyList do
 
   ## Examples
 
-  iex> MyList.split([1, 2, 3, 4], 1, 2)
+  iex> PragProg.MyList.split([1, 2, 3, 4], 1, 2)
   [2, 3]
   """
   @spec split([any], pos_integer, pos_integer) :: [any]
@@ -128,7 +128,7 @@ defmodule MyList do
 
       ## Examples
 
-      iex> MyList.take([1, 2, 3, 4], 2)
+      iex> PragProg.MyList.take([1, 2, 3, 4], 2)
       [1, 2]
     """
   def take(list, count), do: take(list, count, 0, [])

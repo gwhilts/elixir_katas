@@ -1,6 +1,8 @@
-defmodule MyListTest do
+defmodule PragProg.MyListTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
+  alias PragProg.MyList
+
   doctest MyList
 
   def double(n), do: n * 2
