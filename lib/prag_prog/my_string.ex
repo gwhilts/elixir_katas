@@ -23,4 +23,11 @@ defmodule PragProg.MyString do
   defp _padding(word, width) do
     String.duplicate(" ", div(width - String.length(word), 2))
   end
+
+  def sentence_case(str) do
+    String.split(str, ". ", trim: true)
+    |> Enum.map(fn << h :: utf8, t :: binary >> -> String.upcase(<<h>>) <> String.downcase(t) end)
+    |> Enum.join(". ")
+    |> String.replace_suffix("", ". ")
+  end
 end
