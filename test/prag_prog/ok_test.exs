@@ -1,7 +1,6 @@
 defmodule PragProg.OkTest do
   use ExUnit.Case
 
-  alias Mix.Tasks.Run
   alias PragProg.Ok
 
   describe "ok!/1" do
