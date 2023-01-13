@@ -1,6 +1,5 @@
 defmodule PragProg.MyListTest do
   use ExUnit.Case
-  import ExUnit.CaptureIO
   alias PragProg.MyList
 
   doctest MyList
@@ -102,7 +101,7 @@ defmodule PragProg.MyListTest do
     end
 
     test "returns a flat list containing all the elements of a given list containing any number of nested sublists." do
-      given = [ :a, [ :b, :c, [:d] ], :e, [[[:f]]]]
+      given = [:a, [:b, :c, [:d]], :e, [[[:f]]]]
       expected = [:a, :b, :c, :d, :e, :f]
       assert expected == MyList.flatten(given)
     end
