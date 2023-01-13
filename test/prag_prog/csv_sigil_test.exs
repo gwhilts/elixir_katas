@@ -35,4 +35,23 @@ defmodule PragProg.CSVSigilTest do
       assert given == expected
     end
   end
+
+  describe "~v sigil with 'h' flag" do
+    test "returns a keyword list with the header row as keys" do
+      given = ~v"""
+      State, Capitol, Year
+      WA, Olympia, 1889
+      OR, Salem
+      CA, Sacramento, 1850
+      """h
+
+      expected = [
+        [State: "WA", Capitol: "Olympia", Year: 1889],
+        [State: "OR", Capitol: "Salem"],
+        [State: "CA", Capitol: "Sacramento", Year: 1850]
+      ]
+
+      assert given == expected
+    end
+  end
 end

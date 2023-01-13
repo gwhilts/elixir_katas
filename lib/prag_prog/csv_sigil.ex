@@ -5,8 +5,17 @@ defmodule PragProg.CSVSigil do
     |> Enum.map(&parse_line/1)
   end
 
-  defp parse_line(line),
-    do: String.split(line, ",", trim: true) |> Enum.map(&cast_float(String.trim(&1)))
+  def sigil_v(csv, 'h') do
+    [first | lines] = String.split(csv, "\n", trim: true)
+
+    headers = parse_line(first) |> Enum.map(&String.to_atom/1)
+
+    Enum.map(lines, &parse_line/1) |> Enum.map(&Enum.zip(headers, &1))
+  end
+
+  defp parse_line(line) do
+    String.split(line, ",", trim: true) |> Enum.map(&cast_float(String.trim(&1)))
+  end
 
   defp cast_float(e) do
     case Float.parse(e) do
