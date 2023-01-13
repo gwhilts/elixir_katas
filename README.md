@@ -325,3 +325,76 @@ You’ll need the library functions `File.open`, `IO.read(file, :line)`, and `IO
 * `PragProg.Orders.calc_totals/2`
 
 
+###  CSV Sigil
+
+**Problem**:
+
+(_Exercise "MoreCoolStuff-1" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+"Write a sigil ~v that parses multiple lines of comma-separated
+data, returning a list where each element is a row of data and
+each row is a list of values. Don’t worry about quoting—just assume
+each field is separated by a comma."
+
+For example
+
+    csv = ​~​v​"""​​ 
+    ​1,2,3​​ 
+    ​cat,dog​​ 
+    ​"""​
+
+would generate 
+
+    [["1","2","3"], ["cat","dog"]]
+
+
+(_Exercise "MoreCoolStuff-2" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+"The function Float.parse converts leading characters of a string
+to a float, returning either a tuple containing the value and the
+rest of the string, or the atom :error.
+
+Update your CSV sigil so that numbers are automatically converted:​ 
+
+    csv = ​~​v​"""​​ 
+    ​1,2,3.14​​ 
+    ​cat,dog​​ ​
+    """​
+
+should generate 
+
+    [[1.0,2.0,3.14], ["cat","dog"]]
+    
+(_Exercise "MoreCoolStuff-3" from **Programming Elixir ≥ 1.6** by Dave Thomas_)
+
+(Hard) Sometimes the first line of a CSV file is a list of the
+column names. Update your code to support this, and return the
+values in each row as a keyword list, using the column names as the
+keys. Here’s an example:​ 
+
+    csv = ​~​v​"""​​ ​
+    Item,Qty,Price​​ 
+    ​Teddy bear,4,34.95​​ ​
+    Milk,1,2.99​​ 
+    ​Battery,6,8.00​​ ​
+    """​
+
+would generate​ 
+
+    [​   
+      [​Item:​ ​"​​Teddy bear"​, ​Qty:​ 4, ​Price:​ 34.95],​   
+      [​Item:​ ​"​​Milk"​, ​Qty:​ 1, ​Price:​ 2.99],​  
+      [​Item:​ ​"​​Battery"​, ​Qty:​ 6, ​Price:​ 8.00]​ 
+    ]
+
+
+**Files**:
+
+* `lib/prag_prog/csv_sigil.ex`
+* `test/prag_prog/csv_sigil_test.exs`
+
+**Functions**:
+
+* `PragProg.CSVSigil.v_sigil/2`
+
+_Note: this function is not called directly. Instead, a consuming module (e.g. PragProg.CSVSigilTest) should `use PragProg.CSVSigil`, allowing it to then use the sigil (`~v[...]`) within its functions.
