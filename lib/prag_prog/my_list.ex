@@ -1,5 +1,4 @@
 defmodule PragProg.MyList do
-
   @doc """
   returns true if any elemements of a list return a truthy value when applied to a given function.
   """
@@ -24,7 +23,7 @@ defmodule PragProg.MyList do
   """
   @spec caesar(charlist, pos_integer) :: charlist
   def caesar(chars, n) do
-    Enum.map(chars, &(if (&1 + n > ?z), do: &1 + n - 26, else: &1 + n))
+    Enum.map(chars, &if(&1 + n > ?z, do: &1 + n - 26, else: &1 + n))
   end
 
   @doc """
@@ -40,6 +39,7 @@ defmodule PragProg.MyList do
   """
   @spec each([any], fun) :: :ok
   def each([], _), do: :ok
+
   def each([h | tail], f) do
     f.(h)
     each(tail, f)
@@ -56,9 +56,10 @@ defmodule PragProg.MyList do
   @spec filter([any], fun) :: [any]
   def filter(list, f), do: filter(list, f, [])
   defp filter([], _, result), do: result
+
   defp filter([h | tail], f, result) do
     if f.(h) do
-      filter(tail, f, (result ++ [h]))
+      filter(tail, f, result ++ [h])
     else
       filter(tail, f, result)
     end
@@ -83,13 +84,14 @@ defmodule PragProg.MyList do
     # cheating 2: Enum.map(list, f) |> Enum.sum()
     mapsum(list, f, 0)
   end
+
   defp mapsum([], _, sum), do: sum
   defp mapsum([h | tail], f, sum), do: mapsum(tail, f, sum + f.(h))
 
   @spec max([integer]) :: integer
   def max([h | tail]), do: maximum(tail, h)
   defp maximum([], n), do: n
-  defp maximum([h | tail], n), do: if h > n, do: maximum(tail, h), else: maximum(tail, n)
+  defp maximum([h | tail], n), do: if(h > n, do: maximum(tail, h), else: maximum(tail, n))
 
   @doc """
   returns a list of the numbers from from one integer up to another
@@ -123,14 +125,14 @@ defmodule PragProg.MyList do
   defp split([h | tail], start, count, index, result), do: split(tail, start, count, index + 1, result ++ [h])
 
   @spec take([any], pos_integer) :: [any]
-    @doc """
-      returns the first n number of a given list
+  @doc """
+    returns the first n number of a given list
 
-      ## Examples
+    ## Examples
 
-      iex> PragProg.MyList.take([1, 2, 3, 4], 2)
-      [1, 2]
-    """
+    iex> PragProg.MyList.take([1, 2, 3, 4], 2)
+    [1, 2]
+  """
   def take(list, count), do: take(list, count, 0, [])
   defp take([], _, _, result), do: result
   defp take(_, count, index, result) when index >= count, do: result
